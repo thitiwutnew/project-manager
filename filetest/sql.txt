@@ -1,0 +1,25 @@
+SELECT employee.EmployeeID,task.TaskPoID,assigntask.*,assigntaskproject.AssignTaskPoID,memberproject.MemberProjectID FROM task INNER JOIN assigntask ON (task.TaskID=assigntask.TaskID) INNER JOIN assigntaskproject ON (assigntask.AssignTaskPoID=assigntaskproject.AssignTaskPoID) INNER JOIN memberproject on (assigntaskproject.MemberProjectID=memberproject.MemberProjectID) INNER JOIN employee on (memberproject.EmployeeID=employee.EmployeeID) WHERE task.TaskPoID='Task55' AND employee.EmployeeID='2'
+
+
+
+
+�Ҥ�������㹧ҹ����
+SELECT * FROM assigntaskproject INNER JOIN memberproject ON (assigntaskproject.MemberProjectID=memberproject.MemberProjectID) INNER JOIN employee ON (memberproject.EmployeeID=employee.EmployeeID) WHERE TaskPoID='Task55'
+
+�Ҥ�㹧ҹ���·�������˹��
+SELECT employee.EmployeeID,task.TaskPoID,assigntask.*,assigntaskproject.AssignTaskPoID,memberproject.MemberProjectID FROM task 
+INNER JOIN assigntask ON ((task.TaskID=assigntask.TaskID) AND assigntask.AssignTaskPosition='Task-SubManager')
+ INNER JOIN assigntaskproject ON (assigntask.AssignTaskPoID=assigntaskproject.AssignTaskPoID)
+ INNER JOIN memberproject on (assigntaskproject.MemberProjectID=memberproject.MemberProjectID)
+ INNER JOIN employee on (memberproject.EmployeeID=employee.EmployeeID) 
+WHERE task.TaskPoID='Task55' AND employee.EmployeeID='2'
+-------------------------------------
+qurey taskpj  total form  ProjectID and EmployeeID
+SELECT *  FROM projects 
+													INNER  JOIN taskprojects  ON (projects.ProjectID=taskprojects.ProjectID)
+                                                    INNER JOIN assigntaskproject ON (taskprojects.TaskPoID=assigntaskproject.TaskPoID) 
+                                                    INNER JOIN memberproject ON (assigntaskproject.MemberProjectID=memberproject.MemberProjectID)
+                                                    INNER JOIN employee ON (memberproject.EmployeeID=employee.EmployeeID) 
+                                                    WHERE projects.ProjectID='PJ1' AND employee.EmployeeID='9'
+----------------------------------------------------
+
